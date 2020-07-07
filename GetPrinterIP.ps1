@@ -1,4 +1,6 @@
-﻿
+﻿#Usage exemple:
+#Get-Printer | ogv -PassThru | Get-PrinterIP
+
 function Get-TCPIPPrinterPortIP {
     param (
         [CmdletBinding(SupportsShouldProcess=$true)]
