@@ -28,6 +28,9 @@ function Get-WSDPrinterPortIP{
             #Get Name and URL of wsd printers
             $WSDPath = "HKLM:\SYSTEM\CurrentControlSet\Enum\SWD\DAFWSDProvider\";
             foreach ($elm in (Get-ChildItem $WSDPath)) {
+	    	if(!($elm.Property -eq 'FriendlyName')){
+			continue #Sometime the property FriendlyName does not exist!
+		}
                 if( ($elm |Get-ItemProperty -name FriendlyName).FriendlyName -eq $PrinterName ){
                     $url = ($elm |Get-ItemProperty -name LocationInformation).LocationInformation
 										#Keep only IPv4 address
