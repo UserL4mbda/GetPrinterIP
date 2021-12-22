@@ -13,7 +13,7 @@ function Get-TCPIPPrinterPortIP {
         Get-Printer -name $Printer
     }
 		#'?' is more explicit than Where-Object 
-    (Get-WmiObject Win32_TCPIPPrinterPort | ?{ $_.Name -eq $Printer.PortName }).HostAddress
+    (Get-CimInstance Win32_TCPIPPrinterPort | ?{ $_.Name -eq $Printer.PortName }).HostAddress
 }
 
 function Get-WSDPrinterPortIP{
